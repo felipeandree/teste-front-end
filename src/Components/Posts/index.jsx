@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, CardTitle } from "./styles";
+import { ButtonComment, Card, CardBody, CardComment, CardCommentText, CardContainer, CardTitle } from "./styles";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -28,23 +28,23 @@ function Posts() {
   return (
     <Card>
       {posts.map((post) => (
-        <div key={post.id}>
+        <CardContainer key={post.id}>
           <CardTitle>{post.title}</CardTitle>
           <CardBody>{post.body}</CardBody>
           {post.id === selectedPostId ? (
             <>
-              <button onClick={handleHideComments}>Hide Comments</button>
+              <ButtonComment onClick={handleHideComments}>Fechar Comentários</ButtonComment>
               {selectedPostComments.map((comment) => (
-                <div key={comment.id}>
-                  <p>{comment.body}</p>
-                </div>
+                <CardComment key={comment.id}>
+                  <CardCommentText>{comment.body}</CardCommentText>
+                </CardComment>
               ))}
               <Comments postId={post.id} />
             </>
           ) : (
-            <button onClick={() => handleClick(post.id)}>Show Comments</button>
+            <ButtonComment onClick={() => handleClick(post.id)}>Mostrar Comentários</ButtonComment>
           )}
-        </div>
+        </CardContainer>
       ))}
     </Card>
   );

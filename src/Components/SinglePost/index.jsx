@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Card, CardTitle } from "../Posts/styles";
 
 
 function SinglePost({ match }) {
@@ -14,12 +15,12 @@ function SinglePost({ match }) {
     }, [params.id]);
 
   return (
-    <div>
+    <Card>
       {post ? (
-        <div>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-        </div>
+        <CardContainer>
+          <CardTitle>{post.title}</CardTitle>
+          <CardBody>{post.body}</CardBody>
+        </CardContainer>
       ) : (
         <p>Loading post...</p>
       )}
@@ -34,7 +35,7 @@ function SinglePost({ match }) {
       ) : (
         <p>No comments yet.</p>
       )}
-    </div>
+    </Card>
   );
 }
 
