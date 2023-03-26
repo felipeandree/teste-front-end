@@ -33,7 +33,7 @@ function Posts() {
           <CardBody>{post.body}</CardBody>
           {post.id === selectedPostId ? (
             <>
-              <ButtonComment onClick={handleHideComments}>Fechar Comentários</ButtonComment>
+              <ButtonComment onClick={handleHideComments}>Hide Comments</ButtonComment>
               {selectedPostComments.map((comment) => (
                 <CardComment key={comment.id}>
                   <CardCommentText>{comment.body}</CardCommentText>
@@ -42,7 +42,7 @@ function Posts() {
               <Comments postId={post.id} />
             </>
           ) : (
-            <ButtonComment onClick={() => handleClick(post.id)}>Mostrar Comentários</ButtonComment>
+            <ButtonComment onClick={() => handleClick(post.id)}>Show Comments</ButtonComment>
           )}
         </CardContainer>
       ))}
@@ -64,7 +64,7 @@ function Comments({ postId }) {
       {comments.length > 0 &&
         comments.map((comment) => (
           <div key={comment.id}>
-            <p>{comment.body}</p>
+            <CardCommentText>{comment.body}</CardCommentText>
           </div>
         ))}
     </>

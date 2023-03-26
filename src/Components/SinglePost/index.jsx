@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, CardTitle } from "../Posts/styles";
+import { Card, CardTitle, CardBody, CardContainer, CardCommentText } from "../Posts/styles";
+
 
 
 function SinglePost({ match }) {
@@ -29,11 +30,11 @@ function SinglePost({ match }) {
       {comments.length > 0 ? (
         comments.map((comment) => (
           <div key={comment.id}>
-            <p>{comment.body}</p>
+            <CardCommentText>{comment.body}</CardCommentText>
           </div>
         ))
       ) : (
-        <p>No comments yet.</p>
+        <CardCommentText>No comments yet.</CardCommentText>
       )}
     </Card>
   );
